@@ -161,7 +161,7 @@ export default function RegisterPage() {
                                         onChange={(event) =>
                                             setEmail(event.target.value)
                                         }
-                                        placeholder="you@example.com"
+                                        placeholder="novaaiproject@gmail.com"
                                         autoComplete="email"
                                         required
                                         className="h-12 w-full rounded-xl border border-[var(--border)] bg-white pl-11 pr-4 text-sm text-[var(--text-primary)] outline-none transition placeholder:text-[var(--text-muted)] focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-light)]"

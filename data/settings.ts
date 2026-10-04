@@ -2,7 +2,7 @@ import type { UserSettings } from "@/types/settings";
 
 export const defaultSettings: UserSettings = {
     name: "Alex Morgan",
-    email: "alex@example.com",
+    email: "novaaiproject@gmail.com",
     company: "NovaAI",
     timezone: "UTC",
     language: "English",

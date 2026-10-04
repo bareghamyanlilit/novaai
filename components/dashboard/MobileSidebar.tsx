@@ -207,7 +207,7 @@ export function MobileSidebar({
 
                         <div>
                             <p className="text-sm font-medium text-[var(--text-primary)]">
-                                Lilit Smith
+                                Alex Johnson
                             </p>
 
                             <p className="text-xs text-[var(--text-muted)]">

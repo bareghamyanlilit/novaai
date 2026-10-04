@@ -175,7 +175,7 @@ export function Sidebar() {
 
                     <div className="min-w-0">
                         <p className="truncate text-sm font-medium text-[var(--text-primary)]">
-                            Lilit Smith
+                            Alex Johnson
                         </p>
 
                         <p className="truncate text-xs text-[var(--text-muted)]">

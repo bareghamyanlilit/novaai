@@ -158,7 +158,7 @@ export function DashboardHeader({
                             </p>
 
                             <p className="text-xs text-[var(--text-muted)]">
-                                alex@example.com
+                                novaaiproject@gmail.com
                             </p>
                         </div>
 
@@ -188,7 +188,7 @@ export function DashboardHeader({
                                         </p>
 
                                         <p className="truncate text-xs text-[var(--text-muted)]">
-                                            alex@example.com
+                                            novaaiproject@gmail.com
                                         </p>
                                     </div>
                                 </div>

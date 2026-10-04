@@ -62,7 +62,7 @@ export default function ContactPage() {
                                     </p>
 
                                     <p className="mt-1 text-sm text-[var(--text-secondary)]">
-                                        hello@example.com
+                                        novaaiproject@gmail.com
                                     </p>
                                 </div>
                             </div>
@@ -172,7 +172,7 @@ export default function ContactPage() {
                                                 name="email"
                                                 type="email"
                                                 required
-                                                placeholder="you@example.com"
+                                                placeholder="novaaiproject@gmail.com"
                                                 className="h-12 w-full rounded-xl border border-[var(--border)] px-4 text-sm text-[var(--text-primary)] outline-none transition placeholder:text-[var(--text-muted)] focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-light)]"
                                             />
                                         </div>
