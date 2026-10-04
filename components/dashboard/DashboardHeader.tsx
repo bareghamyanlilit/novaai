@@ -10,9 +10,19 @@ import {
     User,
 } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import {
+    useEffect,
+    useRef,
+    useState,
+    useSyncExternalStore,
+} from "react";
 
 import { getSavedNotifications } from "@/lib/notificationStorage";
+import {
+    getSettingsServerSnapshot,
+    getSettingsSnapshot,
+    subscribeToSettingsStore,
+} from "@/lib/settingsStorage";
 
 interface DashboardHeaderProps {
     onMenuClick: () => void;
@@ -21,6 +31,28 @@ interface DashboardHeaderProps {
 export function DashboardHeader({
     onMenuClick,
 }: DashboardHeaderProps) {
+    const settingsSnapshot =
+        useSyncExternalStore(
+            subscribeToSettingsStore,
+            getSettingsSnapshot,
+            getSettingsServerSnapshot,
+        );
+
+    const settings = settingsSnapshot
+        ? JSON.parse(settingsSnapshot)
+        : {
+            name: "Alex Morgan",
+            email: "novaaiproject@gmail.com",
+        };
+
+    const initials = settings.name
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((part: string) => part[0])
+        .join("")
+        .toUpperCase();
+
     const [unreadNotifications, setUnreadNotifications] =
         useState(0);
 
@@ -149,24 +181,24 @@ export function DashboardHeader({
                         aria-haspopup="menu"
                     >
                         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
-                            AM
+                            {initials}
                         </div>
 
                         <div className="hidden text-left xl:block">
                             <p className="text-sm font-medium text-[var(--text-primary)]">
-                                Alex Morgan
+                                {settings.name}
                             </p>
 
                             <p className="text-xs text-[var(--text-muted)]">
-                                novaaiproject@gmail.com
+                                {settings.email}
                             </p>
                         </div>
 
                         <ChevronDown
                             size={16}
                             className={`hidden text-[var(--text-muted)] transition-transform xl:block ${profileOpen
-                                    ? "rotate-180"
-                                    : ""
+                                ? "rotate-180"
+                                : ""
                                 }`}
                         />
                     </button>
@@ -179,16 +211,16 @@ export function DashboardHeader({
                             <div className="border-b border-[var(--border)] p-4">
                                 <div className="flex items-center gap-3">
                                     <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[var(--primary)] text-sm font-semibold text-white">
-                                        AM
+                                        {initials}
                                     </div>
 
                                     <div className="min-w-0">
                                         <p className="truncate text-sm font-semibold text-[var(--text-primary)]">
-                                            Alex Morgan
+                                            {settings.name}
                                         </p>
 
                                         <p className="truncate text-xs text-[var(--text-muted)]">
-                                            novaaiproject@gmail.com
+                                            {settings.email}
                                         </p>
                                     </div>
                                 </div>

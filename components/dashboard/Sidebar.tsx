@@ -15,6 +15,15 @@ import {
     Database,
     Bell,
 } from "lucide-react";
+import {
+    getSettingsServerSnapshot,
+    getSettingsSnapshot,
+    subscribeToSettingsStore,
+} from "@/lib/settingsStorage";
+
+import { defaultSettings } from "@/data/settings";
+import type { UserSettings } from "@/types/settings";
+import { useSyncExternalStore } from "react";
 
 const navigation = [
     {
@@ -79,6 +88,23 @@ const secondaryNavigation = [
 
 export function Sidebar() {
     const pathname = usePathname();
+    const settingsSnapshot = useSyncExternalStore(
+        subscribeToSettingsStore,
+        getSettingsSnapshot,
+        getSettingsServerSnapshot,
+    );
+
+    const settings = settingsSnapshot
+        ? (JSON.parse(settingsSnapshot) as UserSettings)
+        : defaultSettings;
+
+    const initials = settings.name
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((part) => part[0])
+        .join("")
+        .toUpperCase();
 
     return (
         <aside className="hidden w-[280px] shrink-0 border-r border-[var(--border)] bg-white lg:flex lg:flex-col">
@@ -170,12 +196,12 @@ export function Sidebar() {
             <div className="border-t border-[var(--border)] p-4">
                 <div className="flex items-center gap-3 rounded-lg p-2">
                     <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--primary-light)] text-sm font-semibold text-[var(--primary)]">
-                        LS
+                        {initials}
                     </div>
 
                     <div className="min-w-0">
                         <p className="truncate text-sm font-medium text-[var(--text-primary)]">
-                            Alex Johnson
+                            {settings.name}
                         </p>
 
                         <p className="truncate text-xs text-[var(--text-muted)]">

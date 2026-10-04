@@ -16,7 +16,15 @@ import {
     Workflow,
     X,
 } from "lucide-react";
+import {
+    getSettingsServerSnapshot,
+    getSettingsSnapshot,
+    subscribeToSettingsStore,
+} from "@/lib/settingsStorage";
 
+import { defaultSettings } from "@/data/settings";
+import type { UserSettings } from "@/types/settings";
+import { useSyncExternalStore } from "react";
 interface MobileSidebarProps {
     open: boolean;
     onClose: () => void;
@@ -88,7 +96,23 @@ export function MobileSidebar({
     onClose,
 }: MobileSidebarProps) {
     const pathname = usePathname();
+    const settingsSnapshot = useSyncExternalStore(
+        subscribeToSettingsStore,
+        getSettingsSnapshot,
+        getSettingsServerSnapshot,
+    );
 
+    const settings = settingsSnapshot
+        ? (JSON.parse(settingsSnapshot) as UserSettings)
+        : defaultSettings;
+
+    const initials = settings.name
+        .trim()
+        .split(/\s+/)
+        .slice(0, 2)
+        .map((part) => part[0])
+        .join("")
+        .toUpperCase();
     if (!open) {
         return null;
     }
@@ -202,15 +226,15 @@ export function MobileSidebar({
                 <div className="border-t border-[var(--border)] p-4">
                     <div className="flex items-center gap-3 rounded-lg p-2">
                         <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--primary-light)] text-sm font-semibold text-[var(--primary)]">
-                            LS
+                            {initials}
                         </div>
 
-                        <div>
-                            <p className="text-sm font-medium text-[var(--text-primary)]">
-                                Alex Johnson
+                        <div className="min-w-0">
+                            <p className="truncate text-sm font-medium text-[var(--text-primary)]">
+                                {settings.name}
                             </p>
 
-                            <p className="text-xs text-[var(--text-muted)]">
+                            <p className="truncate text-xs text-[var(--text-muted)]">
                                 Admin
                             </p>
                         </div>
