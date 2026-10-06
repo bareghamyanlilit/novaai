@@ -323,7 +323,7 @@ export default function SolutionsPage() {
                 <div className="mx-auto max-w-[1280px] px-5 md:px-10">
                     <div className="mx-auto max-w-2xl text-center">
                         <span className="text-sm font-semibold uppercase tracking-wider text-[var(--primary)]">
-                            Why NovaAI
+                            Why NovaLiAi
                         </span>
 
                         <h2 className="mt-4 text-3xl font-bold tracking-tight text-[var(--text-primary)] sm:text-4xl">
@@ -358,7 +358,7 @@ export default function SolutionsPage() {
                     </h2>
 
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-indigo-100">
-                        Start with the NovaAI template and adapt the
+                        Start with the NovaLiAi template and adapt the
                         experience to your own product, users, and AI
                         infrastructure.
                     </p>

@@ -1,6 +1,6 @@
-const STORAGE_KEY = "novaai-payment-method";
+const STORAGE_KEY = "novaliai-payment-method";
 const STORAGE_EVENT =
-    "novaai-payment-method-change";
+    "novaliai-payment-method-change";
 
 export interface SavedPaymentMethod {
     brand: "Visa" | "Mastercard";

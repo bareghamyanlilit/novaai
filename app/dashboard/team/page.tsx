@@ -622,7 +622,7 @@ export default function TeamPage() {
                             </h2>
 
                             <p className="mt-1 text-sm text-[var(--text-secondary)]">
-                                Add a teammate to your NovaAI
+                                Add a teammate to your NovaLiAi
                                 workspace.
                             </p>
                         </div>
@@ -658,7 +658,7 @@ export default function TeamPage() {
                                             event.target.value,
                                         )
                                     }
-                                    placeholder="novaaiproject@gmail.com"
+                                    placeholder="novaliaiproject@gmail.com"
                                     className="h-11 w-full rounded-xl border border-[var(--border)] px-3 text-sm outline-none transition-colors focus:border-[var(--primary)]"
                                 />
                             </div>

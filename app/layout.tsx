@@ -10,8 +10,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
     title: {
-        default: "NovaAI — AI Agents & Automation Workspace",
-        template: "%s | NovaAI",
+        default: "NovaLiAi — AI Agents & Automation Workspace",
+        template: "%s | NovaLiAi",
     },
 
     description:
@@ -30,12 +30,12 @@ export const metadata: Metadata = {
 
     authors: [
         {
-            name: "NovaAI",
+            name: "NovaLiAi",
         },
     ],
 
     openGraph: {
-        title: "NovaAI — AI Agents & Automation Workspace",
+        title: "NovaLiAi — AI Agents & Automation Workspace",
         description:
             "A modern AI agents and automation workspace template for teams building AI-powered products.",
         type: "website",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 
     twitter: {
         card: "summary_large_image",
-        title: "NovaAI — AI Agents & Automation Workspace",
+        title: "NovaLiAi — AI Agents & Automation Workspace",
         description:
             "A modern AI agents and automation workspace template for teams building AI-powered products.",
         images: ["/og-image.png"],

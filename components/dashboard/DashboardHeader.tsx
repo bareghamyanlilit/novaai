@@ -42,7 +42,7 @@ export function DashboardHeader({
         ? JSON.parse(settingsSnapshot)
         : {
             name: "Alex Morgan",
-            email: "novaaiproject@gmail.com",
+            email: "novaliaiproject@gmail.com",
         };
 
     const initials = settings.name

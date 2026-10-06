@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Create account",
-    description: "Create your NovaAI workspace account.",
+    description: "Create your NovaLiAi workspace account.",
 };
 
 export default function RegisterLayout({

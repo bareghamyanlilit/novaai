@@ -30,12 +30,12 @@ export async function generateMetadata({
 
     if (!post) {
         return {
-            title: "Post not found | NovaAI",
+            title: "Post not found | NovaLiAi",
         };
     }
 
     return {
-        title: `${post.title} | NovaAI`,
+        title: `${post.title} | NovaLiAi`,
         description: post.excerpt,
     };
 }
@@ -125,7 +125,7 @@ export default async function BlogPostPage({
 
                         <div className="mt-10 border-t border-[var(--border)] pt-6">
                             <p className="text-sm text-[var(--text-muted)]">
-                                This article is demo content for the NovaAI
+                                This article is demo content for the NovaLiAi
                                 template.
                             </p>
                         </div>

@@ -1,7 +1,7 @@
 import type { BillingPlan } from "@/types/billing";
 
-const STORAGE_KEY = "novaai-billing-plan";
-const STORAGE_EVENT = "novaai-billing-plan-change";
+const STORAGE_KEY = "novaliaiai-billing-plan";
+const STORAGE_EVENT = "novaliai-billing-plan-change";
 
 const validPlans: BillingPlan[] = [
     "Free",

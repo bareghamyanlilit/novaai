@@ -9,7 +9,7 @@ export const blogPosts: BlogPost[] = [
         category: "AI Agents",
         date: "October 2, 2026",
         readTime: "6 min read",
-        author: "NovaAI Team",
+        author: "NovaLiAi Team",
         authorRole: "Product & AI",
         image: "/images/blog/ai-agents.jpg",
         content: [
@@ -27,7 +27,7 @@ export const blogPosts: BlogPost[] = [
         category: "Automation",
         date: "September 26, 2026",
         readTime: "5 min read",
-        author: "NovaAI Team",
+        author: "NovaLiAi Team",
         authorRole: "Product & AI",
         image: "/images/blog/automation.jpg",
         content: [
@@ -45,7 +45,7 @@ export const blogPosts: BlogPost[] = [
         category: "Knowledge",
         date: "September 18, 2026",
         readTime: "7 min read",
-        author: "NovaAI Team",
+        author: "NovaLiAi Team",
         authorRole: "Product & AI",
         image: "/images/blog/knowledge-base.jpg",
         content: [
@@ -63,7 +63,7 @@ export const blogPosts: BlogPost[] = [
         category: "Product Design",
         date: "September 10, 2026",
         readTime: "5 min read",
-        author: "NovaAI Team",
+        author: "NovaLiAi Team",
         authorRole: "Product & AI",
         image: "/images/blog/ai-design.jpg",
         content: [

@@ -143,7 +143,7 @@ export function MobileSidebar({
                         </div>
 
                         <span className="text-lg font-semibold text-[var(--text-primary)]">
-                            NovaAI
+                            NovaLiAi
                         </span>
                     </Link>
 

@@ -3,7 +3,7 @@ import { Quote } from "lucide-react";
 const testimonials = [
     {
         quote:
-            "NovaAI gave our team a much clearer way to organize AI agents and automate repetitive workflows.",
+            "NovaLiAi gave our team a much clearer way to organize AI agents and automate repetitive workflows.",
         name: "Alex Morgan",
         role: "Product Lead",
         company: "Vertex",
@@ -41,7 +41,7 @@ export function Testimonials() {
                     </h2>
 
                     <p className="mt-5 text-base leading-7 text-[var(--text-secondary)] sm:text-lg">
-                        See how modern teams can use NovaAI to organize and
+                        See how modern teams can use NovaLiAi to organize and
                         automate their AI workflows.
                     </p>
                 </div>

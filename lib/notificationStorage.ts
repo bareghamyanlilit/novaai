@@ -1,8 +1,8 @@
 import { notifications as demoNotifications } from "@/data/notifications";
 import type { Notification } from "@/types/notification";
 
-const STORAGE_KEY = "novaai-notifications";
-const STORAGE_EVENT = "novaai-notifications-change";
+const STORAGE_KEY = "novaliai-notifications";
+const STORAGE_EVENT = "novaliai-notifications-change";
 
 let snapshot = "";
 let initialized = false;

@@ -58,7 +58,7 @@ export default function ResetPasswordPage() {
                                 </h1>
 
                                 <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-                                    Choose a new password for your NovaAI
+                                    Choose a new password for your NovaLiAi
                                     account.
                                 </p>
 

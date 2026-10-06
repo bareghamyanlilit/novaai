@@ -144,7 +144,7 @@ export default function NotificationsPage() {
 
                     <p className="mt-2 max-w-2xl text-sm leading-6 text-[var(--text-secondary)]">
                         Stay updated with activity across
-                        your NovaAI workspace.
+                        your NovaLiAi workspace.
                     </p>
                 </div>
 

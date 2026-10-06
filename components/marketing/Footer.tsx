@@ -76,7 +76,7 @@ export function Footer() {
 
                 <div className="mt-12 flex flex-col gap-4 border-t border-[var(--border)] pt-6 text-sm text-[var(--text-muted)] sm:flex-row sm:items-center sm:justify-between">
                     <p>
-                        © {new Date().getFullYear()} NovaAI. All rights
+                        © {new Date().getFullYear()} NovaLiAi. All rights
                         reserved.
                     </p>
 

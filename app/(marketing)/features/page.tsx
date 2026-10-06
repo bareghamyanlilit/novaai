@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Features",
     description:
-        "Explore AI agents, prompt libraries, knowledge bases, workflows, AI chat, and analytics in NovaAI.",
+        "Explore AI agents, prompt libraries, knowledge bases, workflows, AI chat, and analytics in NovaLiAi.",
 };
 
 import {
@@ -82,7 +82,7 @@ export default function FeaturesPage() {
                         </h1>
 
                         <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[var(--text-secondary)] sm:text-lg">
-                            NovaAI brings agents, prompts, knowledge,
+                            NovaLiAi brings agents, prompts, knowledge,
                             automation, chat, and analytics together in one
                             modern workspace.
                         </p>
@@ -164,7 +164,7 @@ export default function FeaturesPage() {
                         </h2>
 
                         <p className="mt-5 max-w-xl text-base leading-7 text-[var(--text-secondary)]">
-                            NovaAI is structured around the way modern teams
+                            NovaLiAi is structured around the way modern teams
                             actually work with AI: create agents, provide
                             knowledge, automate tasks, and measure results.
                         </p>
@@ -250,7 +250,7 @@ export default function FeaturesPage() {
                     </h2>
 
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
-                        Start with the NovaAI template and customize it for
+                        Start with the NovaLiAi template and customize it for
                         your own AI product.
                     </p>
 

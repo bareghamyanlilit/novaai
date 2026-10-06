@@ -1,7 +1,7 @@
 import type { ChatConversation } from "@/types/chat";
 
-const STORAGE_KEY = "novaai-chat-conversations";
-const STORAGE_EVENT = "novaai-chat-conversations-change";
+const STORAGE_KEY = "novaliai-chat-conversations";
+const STORAGE_EVENT = "novaliai-chat-conversations-change";
 
 let snapshot = "";
 let initialized = false;

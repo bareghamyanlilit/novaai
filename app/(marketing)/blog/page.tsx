@@ -23,7 +23,7 @@ export default function BlogPage() {
                 <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
                     <div className="max-w-3xl">
                         <p className="text-sm font-semibold uppercase tracking-wider text-[var(--primary)]">
-                            NovaAI Blog
+                            NovaLiAi Blog
                         </p>
 
                         <h1 className="mt-3 text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl">

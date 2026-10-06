@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Privacy Policy | NovaAI",
-    description: "Privacy Policy for the NovaAI template.",
+    title: "Privacy Policy | NovaLiAi",
+    description: "Privacy Policy for the NovaLiAi template.",
 };
 
 export default function PrivacyPage() {
@@ -14,7 +14,7 @@ export default function PrivacyPage() {
                     href="/"
                     className="text-sm font-medium text-[var(--primary)] hover:text-[var(--primary-hover)]"
                 >
-                    ← Back to NovaAI
+                    ← Back to NovaLiAi
                 </Link>
 
                 <div className="mt-10">
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
                         </h2>
                         <p className="mt-3 leading-7">
                             This Privacy Policy is provided as demo content
-                            for the NovaAI template. It is not intended to
+                            for the NovaLiAi template. It is not intended to
                             serve as legal advice or as a complete privacy
                             policy for a production application.
                         </p>
@@ -49,7 +49,7 @@ export default function PrivacyPage() {
                             Data Collection
                         </h2>
                         <p className="mt-3 leading-7">
-                            The NovaAI template does not include a production
+                            The NovaLiAi template does not include a production
                             backend, database, authentication provider, or
                             external AI service. Any data collection should be
                             implemented and documented by the buyer when

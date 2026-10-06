@@ -262,7 +262,7 @@ export default function BillingPage() {
                     <div class="header">
                         <div>
                             <div class="brand">
-                                NovaAI
+                                NovaLiAi
                             </div>
 
                             <p class="muted">

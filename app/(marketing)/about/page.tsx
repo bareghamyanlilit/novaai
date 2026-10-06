@@ -12,7 +12,7 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "About",
     description:
-        "Learn about NovaAI and the ideas behind its AI agents and automation workspace.",
+        "Learn about NovaLiAi and the ideas behind its AI agents and automation workspace.",
 };
 
 const values = [
@@ -57,7 +57,7 @@ export default function AboutPage() {
                                 size={16}
                                 className="text-[var(--primary)]"
                             />
-                            About NovaAI
+                            About NovaLiAi
                         </div>
 
                         <h1 className="mt-7 text-4xl font-bold tracking-tight text-[var(--text-primary)] sm:text-5xl lg:text-6xl">
@@ -65,7 +65,7 @@ export default function AboutPage() {
                         </h1>
 
                         <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-[var(--text-secondary)] sm:text-lg">
-                            NovaAI is a modern frontend template for teams
+                            NovaLiAi is a modern frontend template for teams
                             building AI-powered products, agents, and
                             automated workflows.
                         </p>
@@ -92,7 +92,7 @@ export default function AboutPage() {
                         </p>
 
                         <p className="mt-4 text-base leading-7 text-[var(--text-secondary)]">
-                            NovaAI brings those experiences together in one
+                            NovaLiAi brings those experiences together in one
                             structured workspace. The result is a clean
                             foundation that can be adapted to many different
                             AI SaaS products.
@@ -271,7 +271,7 @@ export default function AboutPage() {
                             </h2>
 
                             <p className="mt-5 text-base leading-7 text-[var(--text-secondary)]">
-                                NovaAI is intentionally built as a frontend
+                                NovaLiAi is intentionally built as a frontend
                                 template. Connect your preferred AI provider,
                                 authentication system, database, billing
                                 service, or backend without rebuilding the
@@ -332,7 +332,7 @@ export default function AboutPage() {
 
                         <p className="mx-auto mt-4 max-w-xl text-sm leading-6 text-indigo-100 sm:text-base">
                             Start with a polished foundation and customize
-                            NovaAI around your product, brand, and workflow.
+                            NovaLiAi around your product, brand, and workflow.
                         </p>
 
                         <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">

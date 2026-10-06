@@ -6,7 +6,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
     title: "Pricing",
     description:
-        "Explore NovaAI pricing plans and choose the workspace setup that fits your team.",
+        "Explore NovaLiAi pricing plans and choose the workspace setup that fits your team.",
 };
 export default function PricingPage() {
     return (
@@ -129,7 +129,7 @@ export default function PricingPage() {
                     </h2>
 
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
-                        NovaAI is a frontend template, so you can replace
+                        NovaLiAi is a frontend template, so you can replace
                         these plans with usage-based, seat-based, or
                         custom pricing.
                     </p>

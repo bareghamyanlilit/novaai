@@ -483,7 +483,7 @@ function AppearanceSettings({
         <div className="space-y-6">
             <SettingsSection
                 title="Appearance"
-                description="Customize how NovaAI looks on your device."
+                description="Customize how NovaLiAi looks on your device."
             />
 
             <div className="grid gap-4 sm:grid-cols-2">
@@ -545,7 +545,7 @@ function IntegrationSettings() {
         <div className="space-y-6">
             <SettingsSection
                 title="Integrations"
-                description="Connect external services to your NovaAI workspace."
+                description="Connect external services to your NovaLiAi workspace."
             />
 
             <div className="space-y-3">

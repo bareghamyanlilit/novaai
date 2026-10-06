@@ -1,8 +1,8 @@
 import { defaultSettings } from "@/data/settings";
 import type { UserSettings } from "@/types/settings";
 
-const STORAGE_KEY = "novaai-settings";
-const STORAGE_EVENT = "novaai-settings-change";
+const STORAGE_KEY = "novaliai-settings";
+const STORAGE_EVENT = "novaliai-settings-change";
 
 let snapshot = "";
 let initialized = false;

@@ -1,8 +1,8 @@
 import { teamMembers as demoMembers } from "@/data/team";
 import type { TeamMember } from "@/types/team";
 
-const STORAGE_KEY = "novaai-team-members";
-const STORAGE_EVENT = "novaai-team-members-change";
+const STORAGE_KEY = "novaliai-team-members";
+const STORAGE_EVENT = "novaliai-team-members-change";
 
 let snapshot = "";
 let initialized = false;

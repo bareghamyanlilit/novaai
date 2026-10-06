@@ -416,7 +416,7 @@ export default function AgentsPage() {
                     </h2>
 
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-indigo-100">
-                        Start with the NovaAI interface and customize the
+                        Start with the NovaLiAi interface and customize the
                         agent experience for your own product.
                     </p>
 

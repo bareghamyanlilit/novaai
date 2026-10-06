@@ -49,7 +49,7 @@ export function AITools() {
                         </h2>
 
                         <p className="mt-5 max-w-lg text-base leading-7 text-[var(--text-secondary)]">
-                            NovaAI brings the tools your team needs together,
+                            NovaLiAi brings the tools your team needs together,
                             so you can move from a simple idea to a complete
                             automated workflow.
                         </p>

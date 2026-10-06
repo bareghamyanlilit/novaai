@@ -1,8 +1,8 @@
 import { knowledgeSources as demoSources } from "@/data/knowledge";
 import type { KnowledgeSource } from "@/types/knowledge";
 
-const STORAGE_KEY = "novaai-knowledge-sources";
-const STORAGE_EVENT = "novaai-knowledge-sources-change";
+const STORAGE_KEY = "novaliai-knowledge-sources";
+const STORAGE_EVENT = "novaliai-knowledge-sources-change";
 
 let snapshot = "";
 let initialized = false;

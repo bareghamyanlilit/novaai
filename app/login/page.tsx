@@ -99,7 +99,7 @@ export default function LoginPage() {
                             </h2>
 
                             <p className="mt-2 text-sm leading-6 text-[var(--text-secondary)]">
-                                Sign in to continue to your NovaAI
+                                Sign in to continue to your NovaLiAi
                                 workspace.
                             </p>
                         </div>
@@ -129,7 +129,7 @@ export default function LoginPage() {
                                         onChange={(event) =>
                                             setEmail(event.target.value)
                                         }
-                                        placeholder="novaaiproject@gmail.com"
+                                        placeholder="novaliaiproject@gmail.com"
                                         autoComplete="email"
                                         required
                                         className="h-12 w-full rounded-xl border border-[var(--border)] bg-white pl-11 pr-4 text-sm text-[var(--text-primary)] outline-none transition placeholder:text-[var(--text-muted)] focus:border-[var(--primary)] focus:ring-4 focus:ring-[var(--primary-light)]"

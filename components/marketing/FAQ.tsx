@@ -5,9 +5,9 @@ import { useState } from "react";
 
 const faqs = [
     {
-        question: "Is NovaAI a real AI service?",
+        question: "Is NovaLiAi a real AI service?",
         answer:
-            "NovaAI is a frontend template for AI SaaS products. It includes polished pages, dashboards, interactions, and demo data. You can connect your own AI provider, backend, database, and authentication system.",
+            "NovaLiAi is a frontend template for AI SaaS products. It includes polished pages, dashboards, interactions, and demo data. You can connect your own AI provider, backend, database, and authentication system.",
     },
     {
         question: "Can I connect my own AI API?",
@@ -53,7 +53,7 @@ export function FAQ() {
 
                     <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-[var(--text-secondary)]">
                         Everything you need to know before getting started
-                        with NovaAI.
+                        with NovaLiAi.
                     </p>
                 </div>
 

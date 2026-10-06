@@ -1,7 +1,7 @@
 import type { Workflow } from "@/types/workflow";
 
-const STORAGE_KEY = "novaai-workflows";
-const STORAGE_EVENT = "novaai-workflows-change";
+const STORAGE_KEY = "novaliai-workflows";
+const STORAGE_EVENT = "novaliai-workflows-change";
 
 let snapshot = "";
 let initialized = false;

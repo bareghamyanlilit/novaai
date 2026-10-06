@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
     title: "Forgot password",
-    description: "Reset your NovaAI account password.",
+    description: "Reset your NovaLiAi account password.",
 };
 
 export default function ForgotPasswordLayout({

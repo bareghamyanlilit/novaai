@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-    title: "Terms of Service | NovaAI",
-    description: "Terms of Service for the NovaAI template.",
+    title: "Terms of Service | NovaLiAi",
+    description: "Terms of Service for the NovaLiAi template.",
 };
 
 export default function TermsPage() {
@@ -14,7 +14,7 @@ export default function TermsPage() {
                     href="/"
                     className="text-sm font-medium text-[var(--primary)] hover:text-[var(--primary-hover)]"
                 >
-                    ← Back to NovaAI
+                    ← Back to NovaLiAi
                 </Link>
 
                 <div className="mt-10">
@@ -38,7 +38,7 @@ export default function TermsPage() {
                         </h2>
                         <p className="mt-3 leading-7">
                             These Terms of Service are provided as demo content
-                            for the NovaAI template. They are not intended to
+                            for the NovaLiAi template. They are not intended to
                             replace legal terms for a production application.
                         </p>
                     </section>
@@ -48,7 +48,7 @@ export default function TermsPage() {
                             Use of the Template
                         </h2>
                         <p className="mt-3 leading-7">
-                            NovaAI is a frontend template designed to help
+                            NovaLiAi is a frontend template designed to help
                             developers build AI-focused SaaS interfaces. The
                             template does not provide a production AI service,
                             backend, database, or authentication system.
