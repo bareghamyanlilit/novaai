@@ -7,14 +7,23 @@ import { useMemo, useState } from "react";
 import { AgentCard } from "@/components/dashboard/AgentCard";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import { agents } from "@/data/agents";
-import type { AgentStatus } from "@/types/agent";
+import { agents as defaultAgents } from "@/data/agents";
+import {
+    deleteAgent,
+    getStoredAgents,
+} from "@/lib/agentStorage";
+import type { Agent, AgentStatus } from "@/types/agent";
 
 type FilterValue = "all" | AgentStatus;
 
 export default function AgentsPage() {
+    const [agents, setAgents] = useState<Agent[]>(() =>
+        getStoredAgents(defaultAgents),
+    );
+
     const [search, setSearch] = useState("");
-    const [status, setStatus] = useState<FilterValue>("all");
+    const [status, setStatus] =
+        useState<FilterValue>("all");
 
     const filteredAgents = useMemo(() => {
         const normalizedSearch = search.trim().toLowerCase();
@@ -22,8 +31,12 @@ export default function AgentsPage() {
         return agents.filter((agent) => {
             const matchesSearch =
                 normalizedSearch === "" ||
-                agent.name.toLowerCase().includes(normalizedSearch) ||
-                agent.description.toLowerCase().includes(normalizedSearch);
+                agent.name
+                    .toLowerCase()
+                    .includes(normalizedSearch) ||
+                agent.description
+                    .toLowerCase()
+                    .includes(normalizedSearch);
 
             const matchesStatus =
                 status === "all" ||
@@ -31,7 +44,18 @@ export default function AgentsPage() {
 
             return matchesSearch && matchesStatus;
         });
-    }, [search, status]);
+    }, [agents, search, status]);
+
+    const handleDeleteAgent = (agentId: string) => {
+        const updatedAgents = deleteAgent(agentId);
+
+        setAgents(updatedAgents);
+    };
+
+    const clearFilters = () => {
+        setSearch("");
+        setStatus("all");
+    };
 
     return (
         <main className="min-h-screen bg-[var(--surface-secondary)]">
@@ -117,6 +141,7 @@ export default function AgentsPage() {
                                 <AgentCard
                                     key={agent.id}
                                     agent={agent}
+                                    onDelete={handleDeleteAgent}
                                 />
                             ))}
                         </div>
@@ -138,16 +163,15 @@ export default function AgentsPage() {
                                 different status filter.
                             </p>
 
-                            <button
-                                type="button"
-                                onClick={() => {
-                                    setSearch("");
-                                    setStatus("all");
-                                }}
-                                className="mt-5 text-sm font-medium text-[var(--primary)] hover:text-[var(--primary-hover)]"
-                            >
-                                Clear filters
-                            </button>
+                            {(search || status !== "all") && (
+                                <button
+                                    type="button"
+                                    onClick={clearFilters}
+                                    className="mt-5 text-sm font-medium text-[var(--primary)] hover:text-[var(--primary-hover)]"
+                                >
+                                    Clear filters
+                                </button>
+                            )}
                         </div>
                     )}
                 </section>

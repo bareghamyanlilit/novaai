@@ -21,10 +21,10 @@ import {
 import {
     useEffect,
     useMemo,
+    useRef,
     useState,
     useSyncExternalStore,
 } from "react";
-
 import { Button } from "@/components/ui/Button";
 import { conversations as demoConversations } from "@/data/chats";
 import {
@@ -69,6 +69,7 @@ export default function ChatPage() {
     const [message, setMessage] = useState("");
     const [copiedMessageId, setCopiedMessageId] =
         useState<string | null>(null);
+    const fileInputRef = useRef<HTMLInputElement>(null);
     const [sidebarOpen, setSidebarOpen] = useState(false);
     const [openMenuId, setOpenMenuId] =
         useState<string | null>(null);
@@ -881,16 +882,24 @@ export default function ChatPage() {
                             />
 
                             <div className="flex items-center justify-between px-3 pb-3">
-                                <button
-                                    type="button"
-                                    disabled
-                                    aria-label="Attach file"
-                                    title="File attachments are not available in the demo"
-                                    className="cursor-not-allowed rounded-lg p-2 text-[var(--text-muted)] opacity-50"
-                                >
-                                    <Paperclip size={18} />
-                                </button>
+                                <div>
+                                    <input
+                                        ref={fileInputRef}
+                                        type="file"
+                                        className="hidden"
+                                        onChange={() => {}}
+                                    />
 
+                                    <button
+                                        type="button"
+                                        aria-label="Attach file"
+                                        title="Attach file"
+                                        onClick={() => fileInputRef.current?.click()}
+                                        className="rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+                                    >
+                                        <Paperclip size={18} />
+                                    </button>
+                                </div>
                                 <Button
                                     onClick={sendMessage}
                                     disabled={

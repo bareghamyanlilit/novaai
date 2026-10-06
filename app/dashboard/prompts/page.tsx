@@ -1,14 +1,27 @@
 "use client";
 
-import { Plus, Search, Sparkles } from "lucide-react";
-import { useMemo, useState } from "react";
+import {
+    Plus,
+    Search,
+    Sparkles,
+} from "lucide-react";
+import {
+    useEffect,
+    useMemo,
+    useState,
+} from "react";
 
 import { PromptCard } from "@/components/dashboard/PromptCard";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
-import Link from "next/link";
-import { prompts } from "@/data/prompts";
+import { prompts as defaultPrompts } from "@/data/prompts";
+import {
+    deletePrompt,
+    getStoredPrompts,
+} from "@/lib/promptStorage";
 import type { PromptCategory } from "@/types/prompt";
+import Link from "next/link";
+
 type CategoryFilter = "all" | PromptCategory;
 
 const categories: CategoryFilter[] = [
@@ -25,13 +38,25 @@ export default function PromptsPage() {
     const [category, setCategory] =
         useState<CategoryFilter>("all");
 
-    const filteredPrompts = useMemo(() => {
-        const normalizedSearch = search.trim().toLowerCase();
+    const [promptList, setPromptList] =
+        useState(defaultPrompts);
 
-        return prompts.filter((prompt) => {
+    // Load saved prompts from localStorage after hydration.
+    useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        setPromptList(getStoredPrompts(defaultPrompts));
+    }, []);
+
+    const filteredPrompts = useMemo(() => {
+        const normalizedSearch =
+            search.trim().toLowerCase();
+
+        return promptList.filter((prompt) => {
             const matchesSearch =
                 normalizedSearch === "" ||
-                prompt.title.toLowerCase().includes(normalizedSearch) ||
+                prompt.title
+                    .toLowerCase()
+                    .includes(normalizedSearch) ||
                 prompt.description
                     .toLowerCase()
                     .includes(normalizedSearch) ||
@@ -45,7 +70,13 @@ export default function PromptsPage() {
 
             return matchesSearch && matchesCategory;
         });
-    }, [search, category]);
+    }, [search, category, promptList]);
+
+    function handleDeletePrompt(promptId: string) {
+        deletePrompt(promptId);
+
+        window.location.reload();
+    }
 
     return (
         <main className="min-h-screen bg-[var(--surface-secondary)]">
@@ -97,7 +128,8 @@ export default function PromptsPage() {
 
                         <div className="flex gap-2 overflow-x-auto pb-1">
                             {categories.map((item) => {
-                                const active = category === item;
+                                const active =
+                                    category === item;
 
                                 return (
                                     <button
@@ -140,6 +172,7 @@ export default function PromptsPage() {
                                 <PromptCard
                                     key={prompt.id}
                                     prompt={prompt}
+                                    onDelete={handleDeletePrompt}
                                 />
                             ))}
                         </div>

@@ -1,16 +1,24 @@
 "use client";
 
-import { Check, Copy, MoreHorizontal, Star } from "lucide-react";
+import {
+    Check,
+    Copy,
+    MoreHorizontal,
+    Pencil,
+    Star,
+    Trash2,
+} from "lucide-react";
 import { useState } from "react";
 
 import { Badge } from "@/components/ui/Badge";
 import { Card } from "@/components/ui/Card";
 import type { Prompt } from "@/types/prompt";
 import Link from "next/link";
+
 interface PromptCardProps {
     prompt: Prompt;
+    onDelete: (promptId: string) => void;
 }
-
 const categoryVariant = {
     Marketing: "info",
     Sales: "success",
@@ -19,9 +27,13 @@ const categoryVariant = {
     Productivity: "default",
 } as const;
 
-export function PromptCard({ prompt }: PromptCardProps) {
+export function PromptCard({
+    prompt,
+    onDelete,
+}: PromptCardProps) {
     const [copied, setCopied] = useState(false);
     const [favorite, setFavorite] = useState(prompt.favorite);
+    const [menuOpen, setMenuOpen] = useState(false);
 
     async function handleCopy() {
         await navigator.clipboard.writeText(prompt.content);
@@ -33,6 +45,18 @@ export function PromptCard({ prompt }: PromptCardProps) {
         }, 1500);
     }
 
+    function handleDelete() {
+        const confirmed = window.confirm(
+            `Delete "${prompt.title}"? This action cannot be undone.`,
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        onDelete(prompt.id);
+        setMenuOpen(false);
+    }
     return (
         <Card className="group transition-shadow duration-200 hover:shadow-[0_10px_25px_rgba(0,0,0,0.08)]">
             <div className="flex items-start justify-between gap-4">
@@ -48,12 +72,18 @@ export function PromptCard({ prompt }: PromptCardProps) {
                                 ? `Remove ${prompt.title} from favorites`
                                 : `Add ${prompt.title} to favorites`
                         }
-                        onClick={() => setFavorite((value) => !value)}
+                        onClick={() =>
+                            setFavorite((value) => !value)
+                        }
                         className="rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--surface-secondary)]"
                     >
                         <Star
                             size={18}
-                            fill={favorite ? "currentColor" : "none"}
+                            fill={
+                                favorite
+                                    ? "currentColor"
+                                    : "none"
+                            }
                             className={
                                 favorite
                                     ? "text-amber-500"
@@ -62,13 +92,57 @@ export function PromptCard({ prompt }: PromptCardProps) {
                         />
                     </button>
 
-                    <button
-                        type="button"
-                        aria-label={`More options for ${prompt.title}`}
-                        className="rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
-                    >
-                        <MoreHorizontal size={18} />
-                    </button>
+                    <div className="relative">
+                        <button
+                            type="button"
+                            aria-label={`More options for ${prompt.title}`}
+                            aria-expanded={menuOpen}
+                            onClick={() =>
+                                setMenuOpen((value) => !value)
+                            }
+                            className="rounded-lg p-2 text-[var(--text-muted)] transition-colors hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+                        >
+                            <MoreHorizontal size={18} />
+                        </button>
+
+                        {menuOpen && (
+                            <div className="absolute right-0 top-11 z-30 min-w-[170px] rounded-[var(--radius-md)] border border-[var(--border)] bg-white p-1.5 shadow-lg">
+                                <Link
+                                    href={`/dashboard/prompts/${prompt.id}`}
+                                    onClick={() =>
+                                        setMenuOpen(false)
+                                    }
+                                    className="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm text-[var(--text-primary)] transition-colors hover:bg-[var(--surface-secondary)]"
+                                >
+                                    <Pencil size={16} />
+                                    Edit prompt
+                                </Link>
+
+                                <button
+                                    type="button"
+                                    onClick={() => {
+                                        navigator.clipboard.writeText(
+                                            prompt.content,
+                                        );
+                                        setMenuOpen(false);
+                                    }}
+                                    className="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm text-[var(--text-primary)] transition-colors hover:bg-[var(--surface-secondary)]"
+                                >
+                                    <Copy size={16} />
+                                    Duplicate
+                                </button>
+
+                                <button
+                                    type="button"
+                                    onClick={handleDelete}
+                                    className="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm text-red-600 transition-colors hover:bg-red-50"
+                                >
+                                    <Trash2 size={16} />
+                                    Delete prompt
+                                </button>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
 

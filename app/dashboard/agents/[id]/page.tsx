@@ -11,11 +11,14 @@ import {
     MoreHorizontal,
     Save,
     Settings,
+    Trash2,
     TrendingUp,
 } from "lucide-react";
 import { use, useState } from "react";
-
-import { agents } from "@/data/agents";
+import { useRouter } from "next/navigation";
+import { agents as defaultAgents } from "@/data/agents";
+import { deleteAgent, getStoredAgents } from "@/lib/agentStorage";
+import type { Agent } from "@/types/agent";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card, CardHeader, CardTitle } from "@/components/ui/Card";
@@ -119,9 +122,32 @@ export default function AgentDetailsPage({
     const [activeTab, setActiveTab] =
         useState<Tab>("overview");
 
-    const agent = agents.find(
-        (item) => item.id === id,
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    const router = useRouter();
+
+    const [agent, setAgent] = useState<Agent | undefined>(() =>
+        getStoredAgents(defaultAgents).find(
+            (item) => item.id === id,
+        ),
     );
+    const handleDeleteAgent = () => {
+        if (!agent) {
+            return;
+        }
+
+        const confirmed = window.confirm(
+            `Delete "${agent.name}"? This action cannot be undone.`,
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        deleteAgent(agent.id);
+        setAgent(undefined);
+        router.push("/dashboard/agents");
+    };
 
     if (!agent) {
         return (
@@ -216,13 +242,47 @@ export default function AgentDetailsPage({
                         </div>
 
                         <div className="flex items-center gap-2">
-                            <button
-                                type="button"
-                                aria-label="More options"
-                                className="rounded-[var(--radius-md)] border border-[var(--border)] p-2.5 text-[var(--text-secondary)] hover:bg-[var(--surface-secondary)]"
-                            >
-                                <MoreHorizontal size={20} />
-                            </button>
+                            <div className="relative">
+                                <button
+                                    type="button"
+                                    aria-label="More options"
+                                    aria-expanded={menuOpen}
+                                    onClick={() =>
+                                        setMenuOpen((current) => !current)
+                                    }
+                                    className="rounded-[var(--radius-md)] border border-[var(--border)] p-2.5 text-[var(--text-secondary)] transition-colors hover:bg-[var(--surface-secondary)] hover:text-[var(--text-primary)]"
+                                >
+                                    <MoreHorizontal size={20} />
+                                </button>
+
+                                {menuOpen && (
+                                    <div className="absolute right-0 top-12 z-30 min-w-[180px] rounded-[var(--radius-md)] border border-[var(--border)] bg-white p-1.5 shadow-lg">
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setMenuOpen(false);
+                                                setActiveTab("settings");
+                                            }}
+                                            className="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm text-[var(--text-primary)] transition-colors hover:bg-[var(--surface-secondary)]"
+                                        >
+                                            <Settings size={16} />
+                                            Configure
+                                        </button>
+
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setMenuOpen(false);
+                                                handleDeleteAgent();
+                                            }}
+                                            className="flex w-full items-center gap-2 rounded-md px-3 py-2.5 text-left text-sm text-red-600 transition-colors hover:bg-red-50"
+                                        >
+                                            <Trash2 size={16} />
+                                            Delete agent
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
 
                             <Button
                                 onClick={() =>
@@ -283,7 +343,10 @@ export default function AgentDetailsPage({
                     )}
 
                     {activeTab === "settings" && (
-                        <SettingsTab agentName={agent.name} />
+                        <SettingsTab
+                            agentName={agent.name}
+                            onDelete={handleDeleteAgent}
+                        />
                     )}
                 </div>
             </div>
@@ -294,7 +357,7 @@ export default function AgentDetailsPage({
 function OverviewTab({
     agent,
 }: {
-    agent: (typeof agents)[number];
+    agent: Agent;
 }) {
     return (
         <>
@@ -580,8 +643,10 @@ function ActivityTab() {
 
 function SettingsTab({
     agentName,
+    onDelete,
 }: {
     agentName: string;
+    onDelete: () => void;
 }) {
     const [name, setName] = useState(agentName);
     const [model, setModel] = useState("GPT");
@@ -682,6 +747,7 @@ function SettingsTab({
 
                     <button
                         type="button"
+                        onClick={onDelete}
                         className="mt-4 rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-600 hover:bg-red-100"
                     >
                         Delete Agent
