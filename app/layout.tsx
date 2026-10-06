@@ -13,10 +13,43 @@ export const metadata: Metadata = {
         default: "NovaAI — AI Agents & Automation Workspace",
         template: "%s | NovaAI",
     },
+
     description:
         "A modern AI agents and automation workspace template for teams building AI-powered products.",
-};
 
+    keywords: [
+        "AI",
+        "AI SaaS",
+        "AI Agent",
+        "Automation",
+        "Next.js",
+        "Dashboard",
+        "Template",
+        "Workflow",
+    ],
+
+    authors: [
+        {
+            name: "NovaAI",
+        },
+    ],
+
+    openGraph: {
+        title: "NovaAI — AI Agents & Automation Workspace",
+        description:
+            "A modern AI agents and automation workspace template for teams building AI-powered products.",
+        type: "website",
+        images: ["/og-image.png"],
+    },
+
+    twitter: {
+        card: "summary_large_image",
+        title: "NovaAI — AI Agents & Automation Workspace",
+        description:
+            "A modern AI agents and automation workspace template for teams building AI-powered products.",
+        images: ["/og-image.png"],
+    },
+};
 export default function RootLayout({
     children,
 }: Readonly<{
