@@ -38,7 +38,7 @@ export function Footer() {
                             href="/"
                             className="text-xl font-bold tracking-tight text-[var(--text-primary)]"
                         >
-                            Nova
+                            NovaLi
                             <span className="text-[var(--primary)]">
                                 AI
                             </span>

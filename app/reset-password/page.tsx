@@ -43,7 +43,7 @@ export default function ResetPasswordPage() {
                         href="/"
                         className="mx-auto block w-fit text-xl font-bold tracking-tight text-[var(--text-primary)]"
                     >
-                        Nova<span className="text-[var(--primary)]">AI</span>
+                        NovaLi<span className="text-[var(--primary)]">AI</span>
                     </Link>
 
                     <div className="mt-10 rounded-2xl border border-[var(--border)] bg-white p-6 shadow-[0_10px_30px_rgba(15,23,42,0.05)] sm:p-8">

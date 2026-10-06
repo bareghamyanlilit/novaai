@@ -23,7 +23,7 @@ export function Navbar() {
                     onClick={() => setMobileOpen(false)}
                     className="text-xl font-bold tracking-tight text-[var(--text-primary)]"
                 >
-                    Nova<span className="text-[var(--primary)]">AI</span>
+                    NovaLi<span className="text-[var(--primary)]">AI</span>
                 </Link>
 
                 <nav className="hidden items-center gap-8 md:flex">
