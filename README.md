@@ -4,7 +4,9 @@
 
 NovaLiAi is a modern AI SaaS dashboard template built with Next.js, React, TypeScript, and Tailwind CSS.
 
-The project provides a clean foundation for building AI agent platforms, automation products, workflow-based applications, and modern SaaS dashboards.
+It provides a clean foundation for building AI agent platforms, automation products, workflow-based applications, and modern SaaS dashboards.
+
+NovaLiAi is designed as a frontend-focused template. Demo data and selected application state are handled on the client side, making the project easy to customize and extend with your own backend, database, authentication, AI providers, and third-party services.
 
 ---
 
@@ -14,7 +16,11 @@ The project provides a clean foundation for building AI agent platforms, automat
 * Responsive dashboard layout
 * Desktop sidebar navigation
 * Mobile navigation
-* AI Agents interface
+* AI Agents management interface
+* Agent creation and detail pages
+* Prompt Library
+* Prompt search and category filtering
+* Prompt creation and management
 * Workflow management interface
 * Dynamic workflow pages
 * Workflow builder
@@ -23,29 +29,35 @@ The project provides a clean foundation for building AI agent platforms, automat
 * Condition nodes
 * Agent nodes
 * Action nodes
+* Client-side data persistence
 * Reusable UI components
 * Responsive design
 * Data visualization with Recharts
 * Lucide icon system
-* Client-side workflow persistence
+* Marketing website pages
+* Authentication pages
+* Pricing page
+* Blog pages
+* FAQ and contact pages
+* Settings, team, billing, analytics, knowledge, and notifications interfaces
 
 ---
 
 ## Tech Stack
 
-| Technology   | Version / Usage |
-| ------------ | --------------- |
-| Next.js      | 16.3.8          |
-| React        | 19.2.8          |
-| TypeScript   | TypeScript 5    |
-| Tailwind CSS | v4              |
-| Lucide React | Icons           |
-| Recharts     | Charts          |
-| ESLint       | Code quality    |
+| Technology   | Version / Usage    |
+| ------------ | ------------------ |
+| Next.js      | 16.3.8             |
+| React        | 19.2.8             |
+| TypeScript   | TypeScript 5       |
+| Tailwind CSS | v4                 |
+| Lucide React | Interface icons    |
+| Recharts     | Data visualization |
+| ESLint       | Code quality       |
 
 ---
 
-## Requirements
+# Requirements
 
 Before installing NovaLiAi, make sure you have:
 
@@ -127,7 +139,7 @@ http://localhost:3000
 
 # Available Scripts
 
-The project provides the following npm scripts:
+### Development
 
 ```bash
 npm run dev
@@ -135,17 +147,23 @@ npm run dev
 
 Starts the Next.js development server.
 
+### Build
+
 ```bash
 npm run build
 ```
 
 Creates the production build.
 
+### Start
+
 ```bash
 npm run start
 ```
 
-Starts the production server.
+Starts the production Next.js server.
+
+### Lint
 
 ```bash
 npm run lint
@@ -157,53 +175,113 @@ Runs ESLint checks.
 
 # Project Structure
 
-The main project structure is organized as follows:
+The project follows the Next.js App Router architecture.
 
 ```text
 novaliai/
 │
 ├── app/
+│   ├── (marketing)/
+│   │   ├── about/
+│   │   ├── agents/
+│   │   ├── blog/
+│   │   ├── contact/
+│   │   ├── faq/
+│   │   ├── features/
+│   │   ├── pricing/
+│   │   └── solutions/
+│   │
 │   ├── dashboard/
-│   ├── ...
+│   │   ├── agents/
+│   │   ├── analytics/
+│   │   ├── billing/
+│   │   ├── chat/
+│   │   ├── knowledge/
+│   │   ├── notifications/
+│   │   ├── prompts/
+│   │   ├── settings/
+│   │   ├── team/
+│   │   └── workflows/
+│   │
+│   ├── forgot-password/
+│   ├── login/
+│   ├── register/
+│   ├── reset-password/
+│   ├── privacy/
+│   ├── terms/
+│   ├── favicon.ico
 │   ├── globals.css
 │   ├── layout.tsx
-│   └── page.tsx
+│   ├── not-found.tsx
+│   └── og-image.png
 │
 ├── components/
 │   ├── dashboard/
-│   ├── ui/
-│   ├── workflows/
-│   └── ...
+│   ├── marketing/
+│   └── ui/
 │
 ├── data/
+│   ├── agents.ts
+│   ├── analytics.ts
+│   ├── billing.ts
+│   ├── blog.ts
+│   ├── chats.ts
+│   ├── knowledge.ts
+│   ├── notifications.ts
+│   ├── pricing.ts
+│   ├── prompts.ts
+│   ├── settings.ts
+│   ├── team.ts
+│   └── workflows.ts
 │
 ├── lib/
-│   ├── workflowStorage.ts
-│   └── ...
+│   ├── agentStorage.ts
+│   ├── billingStorage.ts
+│   ├── chatStorage.ts
+│   ├── knowledgeStorage.ts
+│   ├── notificationStorage.ts
+│   ├── paymentStorage.ts
+│   ├── promptStorage.ts
+│   ├── settingsStorage.ts
+│   ├── teamStorage.ts
+│   └── workflowStorage.ts
 │
 ├── public/
+│   └── og-image.png
 │
 ├── types/
+│   ├── agent.ts
+│   ├── billing.ts
+│   ├── blog.ts
+│   ├── chat.ts
+│   ├── knowledge.ts
+│   ├── notification.ts
+│   ├── pricing.ts
+│   ├── prompt.ts
+│   ├── settings.ts
+│   ├── team.ts
+│   └── workflow.ts
 │
+├── eslint.config.mjs
+├── next.config.ts
 ├── package.json
 ├── package-lock.json
-├── next.config.ts
+├── postcss.config.mjs
 ├── tsconfig.json
-├── eslint.config.mjs
 └── README.md
 ```
 
-The project follows the Next.js App Router architecture.
-
 ---
 
-# Application Structure
+# Application Architecture
 
 ## App
 
-The `app` directory contains application routes, layouts, global styles, and page-level components.
+The `app` directory contains application routes, layouts, global styles, metadata, and page-level components.
 
-Next.js App Router is used for navigation and route organization.
+NovaLiAi uses the Next.js App Router for route organization and navigation.
+
+Route groups are used to separate the marketing website from the dashboard without affecting the public URL structure.
 
 ---
 
@@ -211,89 +289,159 @@ Next.js App Router is used for navigation and route organization.
 
 The `components` directory contains reusable interface components.
 
-The project separates reusable UI elements from page-specific application logic.
+### Dashboard
 
-This makes it easier to customize or extend the template.
+Dashboard-specific components such as:
+
+* Sidebar
+* Mobile navigation
+* Dashboard header
+* Agent cards
+* Prompt cards
+* Workflow configuration
+* Statistics cards
+* Charts
+* Activity components
+
+### Marketing
+
+Marketing website components such as:
+
+* Navbar
+* Hero
+* Features
+* Pricing
+* FAQ
+* Testimonials
+* CTA
+* Footer
+* Product previews
+
+### UI
+
+Shared interface components such as:
+
+* Button
+* Card
+* Badge
+* Input
+* Avatar
+* Skeleton
+
+Reusable components make it easier to maintain consistent styling throughout the application.
 
 ---
 
-## Data
+# Data
 
-The `data` directory contains application data used by the frontend.
+The `data` directory contains the frontend data used by the template.
 
-This structure allows static or mock data to be separated from UI components.
-
-If you connect NovaLiAi to a real backend, this layer can be replaced or extended with API/database data.
-
----
-
-## Lib
-
-The `lib` directory contains reusable application logic and utilities.
-
-For example:
+Examples include:
 
 ```text
+data/agents.ts
+data/analytics.ts
+data/blog.ts
+data/billing.ts
+data/chats.ts
+data/knowledge.ts
+data/notifications.ts
+data/pricing.ts
+data/prompts.ts
+data/settings.ts
+data/team.ts
+data/workflows.ts
+```
+
+The data layer is separated from UI components so that demo content can be replaced or extended easily.
+
+When connecting NovaLiAi to a real backend, these data sources can be replaced with API, database, or server-side data.
+
+---
+
+# Client-Side Storage
+
+NovaLiAi includes client-side storage utilities for selected application features.
+
+Storage utilities are located in:
+
+```text
+lib/
+```
+
+Examples include:
+
+```text
+lib/agentStorage.ts
+lib/chatStorage.ts
+lib/promptStorage.ts
 lib/workflowStorage.ts
 ```
 
-is responsible for workflow persistence on the client side.
+Browser `localStorage` is used for demo persistence.
 
----
+This allows users to create and manage selected data without requiring a backend database.
 
-## Public
+## Important
 
-The `public` directory contains static assets that can be referenced directly by the application.
+The included template does not provide a server-side database.
 
-Typical assets include:
+Local browser data can be lost if the user clears browser storage or changes browser/device.
 
-* Images
-* Logos
-* Icons
-* Other static files
+For a production SaaS application, the storage layer can be replaced with a backend database or API.
 
----
+Possible solutions include:
 
-## Types
-
-The `types` directory contains shared TypeScript type definitions.
-
-Keeping shared types separate helps maintain consistency throughout the application.
+* PostgreSQL
+* MySQL
+* MongoDB
+* Supabase
+* Firebase
+* Custom REST or GraphQL APIs
 
 ---
 
 # Dashboard
 
-NovaLiAi provides a SaaS-style dashboard interface designed around AI agents and automation workflows.
+NovaLiAi provides a SaaS-style dashboard designed around AI agents, prompts, automation, and workflows.
 
-The dashboard architecture includes:
+The dashboard includes:
 
 * Main navigation
-* Sidebar
+* Desktop sidebar
 * Mobile navigation
 * Dashboard header
 * Main content area
 * Reusable content components
+* Analytics interface
+* Billing interface
+* Team interface
+* Settings interface
+* Knowledge interface
+* Notifications interface
+* Chat interface
 
-The dashboard can be extended with additional sections such as:
-
-* Analytics
-* Settings
-* Integrations
-* Billing
-* Team management
+The dashboard architecture is designed to make it easy to add additional SaaS features.
 
 ---
 
 # AI Agents
 
-The Agents section provides the frontend interface for managing AI agents.
+The Agents section provides an interface for creating and managing AI agents.
 
-An agent can represent an AI-powered task or automated process.
+Agent functionality includes:
 
-The current template focuses on the interface and application structure.
+* Agent listing
+* Agent creation
+* Agent detail pages
+* Agent status
+* Agent configuration
+* Agent deletion
+* Client-side persistence
 
-To turn the interface into a production AI platform, you can connect it to an AI backend or provider such as:
+The current template provides the frontend architecture and demo behavior.
+
+To turn the interface into a production AI platform, connect it to an AI backend or provider such as:
 
 * OpenAI
 * Anthropic
@@ -301,7 +449,46 @@ To turn the interface into a production AI platform, you can connect it to an AI
 * Ollama
 * Custom AI APIs
 
-These integrations require additional implementation and are not automatically provided by the frontend template.
+These integrations require additional backend or provider-specific implementation.
+
+---
+
+# Prompt Library
+
+NovaLiAi includes a Prompt Library for organizing and reusing AI prompts.
+
+Features include:
+
+* Prompt listing
+* Search
+* Category filtering
+* Prompt creation
+* Prompt viewing
+* Prompt copying
+* Prompt deletion
+* Client-side persistence
+
+Available categories include:
+
+* Marketing
+* Sales
+* Support
+* Research
+* Productivity
+
+Prompt storage is handled by:
+
+```text
+lib/promptStorage.ts
+```
+
+Prompt demo data is located in:
+
+```text
+data/prompts.ts
+```
+
+The Prompt Library can be connected to a backend database when building a production application.
 
 ---
 
@@ -309,7 +496,7 @@ These integrations require additional implementation and are not automatically p
 
 NovaLiAi includes a workflow-oriented interface for creating and managing automated processes.
 
-A workflow can contain different types of nodes.
+A workflow can contain different node types.
 
 Current node types include:
 
@@ -355,6 +542,35 @@ Send notification
 
 ---
 
+# Workflow Builder
+
+The workflow builder provides an interface for configuring workflow nodes.
+
+Workflow configuration is handled through reusable components.
+
+The current architecture is designed to be extended with additional node types such as:
+
+```text
+Webhook
+Database
+Email
+HTTP Request
+Delay
+Notification
+```
+
+A new node generally requires:
+
+1. Node type
+2. Node label
+3. Node icon
+4. Node rendering
+5. Configuration UI
+6. Data handling
+7. Validation where necessary
+
+---
+
 # Workflow Pages
 
 Workflows use dynamic routes.
@@ -367,11 +583,17 @@ The workflow detail page follows the structure:
 
 The dynamic `id` identifies the selected workflow.
 
+New workflows can be created through:
+
+```text
+/dashboard/workflows/new
+```
+
 ---
 
 # Workflow Storage
 
-Workflow data is currently persisted on the client using browser `localStorage`.
+Workflow data is persisted on the client using browser `localStorage`.
 
 The storage utility is located at:
 
@@ -379,29 +601,15 @@ The storage utility is located at:
 lib/workflowStorage.ts
 ```
 
-The application uses the following local storage key:
+The local storage key is:
 
 ```text
 novaliai-workflows
 ```
 
-This means workflow data is stored locally in the user's browser.
+Workflow data is therefore stored locally in the user's browser.
 
-### Important
-
-The current implementation does **not** provide a server-side database.
-
-Clearing browser storage or changing browsers/devices can result in the locally stored workflow data no longer being available.
-
-For a production SaaS application, the storage layer can be replaced with a backend database.
-
-Possible solutions include:
-
-* PostgreSQL
-* MySQL
-* MongoDB
-* Supabase
-* Firebase
+For a production application, the storage implementation can be replaced with a server-side database.
 
 ---
 
@@ -414,28 +622,34 @@ Examples include:
 * Button
 * Card
 * Badge
+* Input
+* Avatar
+* Skeleton
 * Sidebar
 * Mobile Sidebar
 * Dashboard Header
+* Agent Card
+* Prompt Card
 * Workflow configuration components
+* Chart components
 
-Reusable components can be modified without rewriting every page that uses them.
+Shared components can be modified without rewriting every page that uses them.
 
 ---
 
 # Icons
 
-NovaLiAi uses [Lucide React](https://lucide.dev/) for interface icons.
+NovaLiAi uses Lucide React for interface icons.
 
 Example:
 
 ```tsx
 import { Plus } from "lucide-react";
 
-<Plus />
+<Plus size={18} />
 ```
 
-You can replace icons by importing another icon from Lucide.
+Additional icons can be imported from the Lucide icon library.
 
 ---
 
@@ -443,7 +657,7 @@ You can replace icons by importing another icon from Lucide.
 
 NovaLiAi uses Recharts for data visualization.
 
-Example import:
+Example:
 
 ```tsx
 import {
@@ -475,7 +689,7 @@ The font configuration is located in:
 app/layout.tsx
 ```
 
-The font can be replaced with another font if required.
+The font can be replaced with another supported font if required.
 
 ---
 
@@ -489,9 +703,7 @@ app/globals.css
 
 Tailwind CSS is used throughout the application.
 
-The styling system can be customized to match your own brand.
-
-You can modify:
+The design system can be customized by changing:
 
 * Colors
 * Backgrounds
@@ -501,6 +713,8 @@ You can modify:
 * Border radius
 * Shadows
 * Responsive layouts
+
+Global design tokens should be updated in the shared styling system rather than changing individual components unnecessarily.
 
 ---
 
@@ -518,7 +732,7 @@ NovaLiAi
 
 and replace the relevant application name with your own brand.
 
-Update:
+Typical branding areas include:
 
 * Application name
 * Logo
@@ -526,6 +740,7 @@ Update:
 * Navigation labels
 * Dashboard headings
 * Metadata
+* Marketing copy
 
 ---
 
@@ -537,18 +752,17 @@ Global metadata is configured in:
 app/layout.tsx
 ```
 
-Example:
+The metadata includes:
 
-```tsx
-export const metadata: Metadata = {
-    title: {
-        default: "NovaLiAi — AI Agents & Automation Workspace",
-        template: "%s | NovaLiAi",
-    },
-};
-```
+* Page title
+* Description
+* Keywords
+* Open Graph metadata
+* Twitter metadata
+* Canonical URL
+* Robots configuration
 
-Update this when rebranding the application.
+Update these values when rebranding the application.
 
 ---
 
@@ -560,9 +774,7 @@ Global theme variables are defined in:
 app/globals.css
 ```
 
-You can customize the primary color and other design tokens from there.
-
-This is the recommended place to make global color changes rather than changing individual components one by one.
+This is the recommended place to customize the primary color and other design tokens.
 
 ---
 
@@ -573,25 +785,25 @@ Create a new directory inside `app`.
 For example:
 
 ```text
-app/dashboard/settings/page.tsx
+app/dashboard/settings/example/page.tsx
 ```
 
-Add:
+Then add a page component:
 
 ```tsx
-export default function SettingsPage() {
+export default function ExamplePage() {
     return (
         <div>
-            <h1>Settings</h1>
+            <h1>Example Page</h1>
         </div>
     );
 }
 ```
 
-The page will then be accessible at:
+The page will then be available at:
 
 ```text
-/dashboard/settings
+/dashboard/settings/example
 ```
 
 ---
@@ -618,7 +830,7 @@ export function Modal() {
 }
 ```
 
-Import it using the project's path aliases:
+Import it using the project's path alias:
 
 ```tsx
 import { Modal } from "@/components/ui/Modal";
@@ -628,57 +840,45 @@ import { Modal } from "@/components/ui/Modal";
 
 # Adding a Workflow Node
 
-To add a new workflow node, update the workflow architecture and configuration UI.
+To add a new workflow node:
 
-For example, a new node could be:
+1. Define the node type.
+2. Add the node label.
+3. Add the node icon.
+4. Add node rendering.
+5. Add configuration controls.
+6. Add data handling.
+7. Add validation where required.
+8. Update workflow persistence if necessary.
+
+Example node types:
 
 ```text
 Webhook
-```
-
-or:
-
-```text
 Database
-```
-
-or:
-
-```text
 Email
+HTTP Request
+Delay
+Notification
 ```
-
-A new node should generally include:
-
-1. Node type
-2. Node label
-3. Node icon
-4. Node rendering
-5. Configuration UI
-6. Data handling
-7. Validation where necessary
 
 ---
 
 # Environment Variables
 
-The current frontend does not require an external AI API key just to run the included interface.
+NovaLiAi does not require environment variables for the included frontend demo functionality.
 
-If you extend NovaLiAi with external services, create:
+If you extend the project with external APIs, authentication, databases, payment providers, or other services, create:
 
 ```text
 .env.local
 ```
 
-Example:
+and add the required environment variables.
 
-```env
-NEXT_PUBLIC_APP_NAME=NovaLiAi
-```
+Never commit private API keys, database credentials, authentication secrets, or other sensitive values to Git.
 
-Never commit private API keys or other secrets to GitHub.
-
-For example:
+Recommended private files include:
 
 ```text
 .env
@@ -686,27 +886,25 @@ For example:
 .env.*.local
 ```
 
-should remain private.
-
 ---
 
 # Deployment
 
-NovaLiAi can be deployed to hosting platforms that support Next.js.
+NovaLiAi can be deployed to hosting platforms that support Next.js applications.
 
 ## Vercel
 
-Vercel is a natural deployment option for a Next.js application.
+Vercel is a natural deployment option for Next.js projects.
 
 General process:
 
 1. Push the project to GitHub.
 2. Create a new project in Vercel.
 3. Import the NovaLiAi repository.
-4. Configure environment variables if required.
+4. Configure environment variables if your customized application requires them.
 5. Deploy.
 
-The standard build command is:
+The standard production build command is:
 
 ```bash
 npm run build
@@ -724,14 +922,20 @@ Before publishing a customized NovaLiAi project, verify:
 * [ ] `npm run build` succeeds
 * [ ] All navigation links work
 * [ ] All pages load correctly
-* [ ] Mobile layout has been tested
 * [ ] Desktop layout has been tested
+* [ ] Mobile layout has been tested
 * [ ] Images load correctly
+* [ ] Favicon has been updated
+* [ ] Open Graph image has been updated
 * [ ] Branding has been updated
 * [ ] Metadata has been updated
 * [ ] No private API keys are committed
 * [ ] No development-only content remains
+* [ ] Client-side persistence has been tested
 * [ ] Workflow functionality has been tested
+* [ ] Agent functionality has been tested
+* [ ] Prompt functionality has been tested
+* [ ] Production build has been tested
 
 ---
 
@@ -749,7 +953,7 @@ npm install
 
 If dependency installation becomes corrupted, remove `node_modules` and reinstall.
 
-Windows PowerShell:
+### Windows PowerShell
 
 ```powershell
 Remove-Item -Recurse -Force node_modules
@@ -806,11 +1010,26 @@ npm run dev
 
 ---
 
+## Local data is missing
+
+NovaLiAi uses browser `localStorage` for selected demo functionality.
+
+If stored data disappears, check whether:
+
+* Browser storage was cleared.
+* The application is running in a different browser.
+* The application is running on a different device.
+* The relevant local storage entry was removed.
+
+For production applications, use a server-side database instead of relying exclusively on browser storage.
+
+---
+
 # Browser Support
 
 NovaLiAi is intended for modern browsers.
 
-Recommended:
+Recommended browsers include:
 
 * Google Chrome
 * Microsoft Edge
@@ -825,7 +1044,7 @@ For the best experience, use a current stable browser version.
 
 NovaLiAi provides a frontend foundation that can be extended into a complete AI SaaS product.
 
-Possible future integrations include:
+Possible integrations include:
 
 ## Authentication
 
@@ -899,14 +1118,16 @@ When requesting support, please include:
 * Exact error message
 * Steps to reproduce the problem
 
-This information makes troubleshooting significantly faster.
+Providing this information makes troubleshooting significantly faster.
 
 ---
 
 # Conclusion
 
-NovaLiAi provides a modern starting point for building AI agents, automation platforms, and SaaS products.
+NovaLiAi provides a modern starting point for building AI agent platforms, automation pharoducts, workflow-based applications, and SaaS dashboards.
 
-Its component-based architecture, workflow interface, responsive dashboard, and reusable styling system make it suitable for further customization and integration with backend services.
+Its component-based architecture, responsive dashboard, workflow builder, Prompt Library, agent management interface, reusable UI system, and client-side persistence make it easy to customize and extend.
+
+Connect the template to your preferred backend, database, authentication system, AI provider, and third-party services to build a production-ready AI SaaS application.
 
 **NovaLiAi — AI Agents & Automation Workspace**

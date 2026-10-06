@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
 import "./globals.css";
 
 const inter = Inter({
@@ -9,6 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
+    metadataBase: new URL("https://novaliai.vercel.app"),
+
     title: {
         default: "NovaLiAi — AI Agents & Automation Workspace",
         template: "%s | NovaLiAi",
@@ -20,12 +23,13 @@ export const metadata: Metadata = {
     keywords: [
         "AI",
         "AI SaaS",
-        "AI Agent",
-        "Automation",
+        "AI Agents",
+        "AI Automation",
         "Next.js",
         "Dashboard",
-        "Template",
+        "SaaS Template",
         "Workflow",
+        "AI Workspace",
     ],
 
     authors: [
@@ -34,12 +38,34 @@ export const metadata: Metadata = {
         },
     ],
 
+    creator: "NovaLiAi",
+    publisher: "NovaLiAi",
+
+    alternates: {
+        canonical: "/",
+    },
+
+    robots: {
+        index: true,
+        follow: true,
+    },
+
     openGraph: {
         title: "NovaLiAi — AI Agents & Automation Workspace",
         description:
             "A modern AI agents and automation workspace template for teams building AI-powered products.",
+        url: "https://novaliai.vercel.app",
+        siteName: "NovaLiAi",
         type: "website",
-        images: ["/og-image.png"],
+        locale: "en_US",
+        images: [
+            {
+                url: "/og-image.png",
+                width: 1200,
+                height: 630,
+                alt: "NovaLiAi — AI Agents & Automation Workspace",
+            },
+        ],
     },
 
     twitter: {
@@ -50,6 +76,7 @@ export const metadata: Metadata = {
         images: ["/og-image.png"],
     },
 };
+
 export default function RootLayout({
     children,
 }: Readonly<{
@@ -57,7 +84,9 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.variable}>{children}</body>
+            <body className={inter.variable}>
+                {children}
+            </body>
         </html>
     );
 }
